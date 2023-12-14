@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <style>
+            :root
+            {
+                font-family:Tahoma, Arial;
+                font-size:13px;
+            }
+            #box
+            {
+                border:1px solid black;
+                width:100px;
+                height:20px;
+                text-align:center;
+                user-select:none;
+            }
+
+            #box > span
+            {
+                position:relative;
+                top:0px;
+                opacity:1;
+                transition:top .25s ease, opacity .25s ease;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="box" onmouseenter="dynamic_translation()">
+            <span id="box-content">Hello World</span>
+        </div>
+        <script>
+
+            function dynamic_translation()
+            {
+                document.getElementById("box-content").style.top = "15px";
+                document.getElementById("box-content").style.opacity = "0";
+                setTimeout(() => {
+                    if(document.getElementById("box-content").innerHTML == "Hello World")
+                    {
+                        document.getElementById("box-content").innerHTML = "你好世界";
+                        document.getElementById("box-content").style.opacity = "1";
+                    }
+                    else
+                    {
+                        document.getElementById("box-content").innerHTML = "Hello World";                        
+                        document.getElementById("box-content").style.opacity = "1";
+                    }
+                    document.getElementById("box-content").style.top = "0px";
+                }, 250)
+            }
+
+        </script>
+    </body>
+</html>
